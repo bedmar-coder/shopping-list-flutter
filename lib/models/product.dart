@@ -5,6 +5,9 @@ class Product {
   String category;
   String image;
   String description;
+  // TODO Actividad 1: atributos para el carrito
+  bool selected = false;
+  int quantity = 1;
 
   Product(this.id, this.name, this.price, this.category, this.image,
       this.description);
