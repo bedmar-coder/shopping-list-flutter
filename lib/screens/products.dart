@@ -11,7 +11,7 @@ class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => _ProductsScreenState();
+  State<ProductsScreen> createState() => _ProductsScreenState();
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
@@ -48,6 +48,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
+  // TODO Actividad 1: abre el carrito o un AlertDialog si está vacío
   void _openCart() {
     if (_productsData == null || _productsData!.getSelectedProducts().isEmpty) {
       showDialog(
@@ -68,7 +69,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     } else {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CartScreen(_produtsData!)),
+        MaterialPageRoute(builder: (context) => CartScreen(_productsData!)),
       );
     }
   }
@@ -83,7 +84,7 @@ class _ProductsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _productsData.getSize(),
-      itemBuilder: (Context, index) =>
+      itemBuilder: (context, index) =>
           _listItem(context, _productsData.getProduct(index)),
     );
   }
@@ -129,12 +130,21 @@ class _ShoppingBagIcon extends StatefulWidget {
   State<_ShoppingBagIcon> createState() => _ShoppingBagIconState();
 }
 
-class _ShoppingBagIconState extends State<ShoppingBagIcon> {
+class _ShoppingBagIconState extends State<_ShoppingBagIcon> {
   late bool _selected;
   @override
   void initState() {
     super.initState();
     _selected = widget.product.selected;
+  }
+
+  // TODO Actividad 1: si el widget se reutiliza con otro producto actualizamos su estado
+  @override
+  void didUpdateWidget(_ShoppingBagIcon viejoWidget) {
+    super.didUpdateWidget(viejoWidget);
+    if (widget.product != viejoWidget.product) {
+      _selected = widget.product.selected;
+    }
   }
 
   //TODO Actividad 1; selecciona o quita el producto

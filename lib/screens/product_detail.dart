@@ -28,9 +28,9 @@ class ProductDetail extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text('Id', style: _myTextStyle1),
-                Text(' $_id', style: _myTextStyle2),
-                Text('Name', style: _myTextStyle1),
+                Text('Id:', style: _myTextStyle1),
+                Text(' $_id ', style: _myTextStyle2),
+                Text('Name:', style: _myTextStyle1),
                 Text(_name, style: _myTextStyle2),
               ],
             ),
