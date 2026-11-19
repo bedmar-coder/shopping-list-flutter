@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:t3_shopping_list/models/product.dart';
 import 'package:t3_shopping_list/providers/products_data.dart';
+// TODO Actividad 4: import de la pantalla de detalle
+import 'package:t3_shopping_list/screens/product_detail.dart';
 
 // TODO Actividad 1: nueva pantalla que muestra solo los productos seleccionados
 class CartScreen extends StatefulWidget {
@@ -59,6 +61,15 @@ class _CartScreenState extends State<CartScreen> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: ListTile(
+        // TODO Actividad 4: al pulsar un producto del carrito se abre su detalle para ello le ponemos onTap
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetail(product.id, product.name,
+                product.description, product.price, product.category,
+                product.image, product.imagenCategoria),
+          ),
+        ),
         leading: Image.asset(
           product.image,
           width: 80.0,

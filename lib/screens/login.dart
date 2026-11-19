@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  
+
   Widget _eMailInput() {
     return Container(
       margin: EdgeInsets.only(bottom: 16.0),

@@ -97,7 +97,10 @@ class _ProductsListView extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                ProductDetail(product.id, product.name, product.description),
+            // TODO Actividad 4: pasamos también precio, categoría, imagen e imagen de la categoría
+            ProductDetail(product.id, product.name, product.description,
+                product.price, product.category, product.image,
+                product.imagenCategoria),
           ),
         ),
         leading: Image.asset(
