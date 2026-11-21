@@ -4,13 +4,12 @@ import 'package:t3_shopping_list/screens/login.dart';
 void main() {
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   static const _title = 'Shopping List';
 
   @override
   Widget build(BuildContext context) {
-    // TODO Actividad 5: paleta de colores de toda la app cambiada  avverde
+    // TODO Actividad 5: paleta de colores de toda la app  cambiada  avverde
     final esquemaColores = ColorScheme.fromSeed(seedColor: Colors.green);
 
     return MaterialApp(
