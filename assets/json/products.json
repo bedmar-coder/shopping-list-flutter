@@ -1,87 +1,114 @@
 {
-  "products" : [
+  "products": [
     {
-      "id" : 1,
+      "id": 1,
       "name": "Banana",
       "price": 2.99,
-      "category" : "fruits" ,
-      "image" : "assets/image/banana.png",
-      "description": "banana Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "fruits",
+      "image": "assets/image/banana.png",
+      "description": "banana Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 4,
+      "descuento": 0,
+      "calorias": 89
     },
     {
-      "id" : 2,
+      "id": 2,
       "name": "Melon",
       "price": 2.15,
-      "category" : "fruits" ,
-      "image" : "assets/image/melon.png",
-      "description": "melon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "fruits",
+      "image": "assets/image/melon.png",
+      "description": "melon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 4,
+      "descuento": 10,
+      "calorias": 34
     },
     {
-      "id" : 3,
+      "id": 3,
       "name": "White Bread",
       "price": 0.89,
-      "category" : "bakery" ,
-      "image" : "assets/image/white_bread.png",
-      "description": "bread Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "bakery",
+      "image": "assets/image/white_bread.png",
+      "description": "bread Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 4,
+      "descuento": 0,
+      "calorias": 265
     },
     {
-      "id" : 4,
+      "id": 4,
       "name": "Chicken Breast",
       "price": 4.35,
-      "category" : "meat" ,
-      "image" : "assets/image/chicken_breast.png",
-      "description": "chicken breast Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "meat",
+      "image": "assets/image/chicken_breast.png",
+      "description": "chicken breast Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 10,
+      "descuento": 5,
+      "calorias": 165
     },
     {
-      "id" : 5,
+      "id": 5,
       "name": "Lamb Chops",
       "price": 14.99,
-      "category" : "meat" ,
-      "image" : "assets/image/lamb_chops.png",
-      "description": "lamb Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "meat",
+      "image": "assets/image/lamb_chops.png",
+      "description": "lamb Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 10,
+      "descuento": 15,
+      "calorias": 294
     },
     {
-      "id" : 6,
+      "id": 6,
       "name": "Muffins",
       "price": 2.56,
-      "category" : "bakery" ,
-      "image" : "assets/image/muffins.png",
-      "description": "muffins Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "bakery",
+      "image": "assets/image/muffins.png",
+      "description": "muffins Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 10,
+      "descuento": 20,
+      "calorias": 377
     },
-
     {
-      "id" : 7,
+      "id": 7,
       "name": "Potatoes",
       "price": 1.89,
-      "category" : "vegetables" ,
-      "image" : "assets/image/potatoes.png",
-      "description": "potatoes ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "vegetables",
+      "image": "assets/image/potatoes.png",
+      "description": "potatoes ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 4,
+      "descuento": 0,
+      "calorias": 77
     },
     {
-      "id" : 8,
+      "id": 8,
       "name": "Carrots",
       "price": 0.99,
-      "category" : "vegetables" ,
-      "image" : "assets/image/carrots.png",
-      "description": "carrots ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "vegetables",
+      "image": "assets/image/carrots.png",
+      "description": "carrots ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 4,
+      "descuento": 5,
+      "calorias": 41
     },
     {
-      "id" : 9,
+      "id": 9,
       "name": "Salmon",
-      "price": 13.50,
-      "category" : "fish" ,
-      "image" : "assets/image/salmon.png",
-      "description": "salmon ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "price": 13.5,
+      "category": "fish",
+      "image": "assets/image/salmon.png",
+      "description": "salmon ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 10,
+      "descuento": 10,
+      "calorias": 208
     },
-
     {
-      "id" : 10,
+      "id": 10,
       "name": "Trout",
       "price": 9.59,
-      "category" : "fish" ,
-      "image" : "assets/image/trout.png",
-      "description": "trout ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis."
+      "category": "fish",
+      "image": "assets/image/trout.png",
+      "description": "trout ipsum dolor sit amet, consectetur adipiscing elit. Donec nec lacinia nunc. Sed aliquam varius quam, ut congue felis blandit pulvinar. Cras ex ex, facilisis.",
+      "iva": 10,
+      "descuento": 0,
+      "calorias": 141
     }
-
   ]
 }

@@ -5,16 +5,23 @@ class Product {
   String category;
   String image;
   String description;
+  // TODO Actividad 2: nuevos campos del producto iva ,descuento y kcal
+  int iva;
+  int descuento;
+  int calorias;
   // TODO Actividad 1: atributos para el carrito
   bool selected = false;
   int quantity = 1;
 
+  // TODO Actividad 2: el constructor recibe también iva, descuento y calorias
   Product(this.id, this.name, this.price, this.category, this.image,
-      this.description);
+      this.description, this.iva, this.descuento, this.calorias);
 
+  // TODO Actividad 2: leemos del json los tres campos nuevos
   factory Product.fromMap(Map<String, dynamic> map) => Product(
       map['id'], map['name'], map['price'],
-      map['category'], map['image'], map['description']);
+      map['category'], map['image'], map['description'],
+      map['iva'], map['descuento'], map['calorias']);
 
 // TODO Actividad 4: devuelve la ruta de la imagen que corresponde a la categoría del producto
   String get imagenCategoria {
