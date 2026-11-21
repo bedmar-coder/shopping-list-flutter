@@ -13,11 +13,17 @@ class ProductDetail extends StatelessWidget {
   final String _imagenCategoria;
   // TODO Actividad 5: tag del Hero, distinto si venimos de la lista o del carrito
   final String _tagHero;
+  // TODO Actividad 2: nuevos campos del producto
+  final int _iva;
+  final int _descuento;
+  final int _calorias;
 
   // TODO Actividad 4: el constructor recibe también precio, categoría, imagen e imagen de la categoría
   // TODO Actividad 5: y el tag del Hero
+  // TODO Actividad 2: y los campos nuevos iva, descuento y calorias
   const ProductDetail(this._id, this._name, this._description, this._precio,
       this._categoria, this._imagen, this._imagenCategoria, this._tagHero,
+      this._iva, this._descuento, this._calorias,
       {Key? key})
       : super(key: key);
 
@@ -119,6 +125,10 @@ class ProductDetail extends StatelessWidget {
             ),
           ],
         ),
+        // TODO Actividad 2: IVA, descuento y calorías del producto
+        Text('IVA: $_iva %', style: estilos.bodyLarge),
+        Text('Descuento: $_descuento %', style: estilos.bodyLarge),
+        Text('Calorías: $_calorias kcal / 100 g', style: estilos.bodyLarge),
         const Divider(height: 32.0),
         Text('Description', style: estilos.titleMedium),
         const SizedBox(height: 4.0),

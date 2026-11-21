@@ -100,7 +100,9 @@ class _CartScreenState extends State<CartScreen> {
           MaterialPageRoute(
             builder: (context) => ProductDetail(product.id, product.name,
                 product.description, product.price, product.category,
-                product.image, product.imagenCategoria, tagHero),
+                product.image, product.imagenCategoria, tagHero
+                // TODO Actividad 2: campos nuevos iva, descuento y calorias
+                ,product.iva, product.descuento, product.calorias),
           ),
         ),
         // TODO Actividad 5: imagen redondeada con Hero
