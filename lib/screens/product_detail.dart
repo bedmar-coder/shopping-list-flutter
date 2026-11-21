@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// TODO Actividad 5: widget reutilizable de la imagen con Hero
+import 'package:t3_shopping_list/widgets/imagen_producto.dart';
 
 class ProductDetail extends StatelessWidget {
   final int _id;
@@ -9,14 +11,13 @@ class ProductDetail extends StatelessWidget {
   final String _categoria;
   final String _imagen;
   final String _imagenCategoria;
-
-  final _myTextStyle1 = const TextStyle(color: Colors.blue, fontSize: 30.0);
-  final _myTextStyle2 = const TextStyle(color: Colors.indigo, fontSize: 30.0);
-  final _myTextStyle3 = const TextStyle(color: Colors.indigo, fontSize: 25.0);
+  // TODO Actividad 5: tag del Hero, distinto si venimos de la lista o del carrito
+  final String _tagHero;
 
   // TODO Actividad 4: el constructor recibe también precio, categoría, imagen e imagen de la categoría
+  // TODO Actividad 5: y el tag del Hero
   const ProductDetail(this._id, this._name, this._description, this._precio,
-      this._categoria, this._imagen, this._imagenCategoria,
+      this._categoria, this._imagen, this._imagenCategoria, this._tagHero,
       {Key? key})
       : super(key: key);
 
@@ -29,15 +30,23 @@ class ProductDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Product detail')),
       body: Container(
+        // TODO Actividad 5: degradado con los colores del tema
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Colors.grey.shade100, Colors.green.shade100])
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Theme.of(context).colorScheme.surface,
+              Theme.of(context).colorScheme.primaryContainer,
+            ],
+          ),
         ),
-        padding: const EdgeInsets.all(12.0),
         // TODO Actividad 4: ListView para poder hacer scroll si el contenido no cabe en pantalla
         child: ListView(
+          padding: const EdgeInsets.all(16.0),
           children: <Widget>[
             //TODO Actividad 4: Dependiendo si es horizontal o no pasamos su respectivo diseño
-            enHorizontal ? _disenoHorizontal() : _disenoVertical(),
+            enHorizontal ? _disenoHorizontal(context) : _disenoVertical(context),
           ],
         ),
       ),
@@ -45,70 +54,76 @@ class ProductDetail extends StatelessWidget {
   }
 
   // TODO Actividad 4: en vertical, la imagen del producto arriba y los datos debajo
-  Widget _disenoVertical() {
+  Widget _disenoVertical(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Center(child: _imagenProducto()),
-        const SizedBox(height: 12.0),
-        _datosProducto(),
+        // TODO Actividad 5: imagen a todo el ancho con Hero
+        ImagenProducto(_imagen, _tagHero, double.infinity, 240.0),
+        const SizedBox(height: 16.0),
+        _datosProducto(context),
       ],
     );
   }
 
   // TODO Actividad 4: en horizontal, la imagen del producto a la izquierda y los datos a la derecha
-  Widget _disenoHorizontal() {
+  Widget _disenoHorizontal(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        _imagenProducto(),
-        const SizedBox(width: 16.0),
-        Expanded(child: _datosProducto()),
+        // TODO Actividad 5: imagen con Hero a la izquierda
+        ImagenProducto(_imagen, _tagHero, 280.0, 220.0),
+        const SizedBox(width: 24.0),
+        Expanded(child: _datosProducto(context)),
       ],
     );
   }
 
-  // TODO Actividad 4: imagen del producto
-  Widget _imagenProducto() {
-    return Image.asset(_imagen, height: 200.0, fit: BoxFit.contain);
-  }
-
   // TODO Actividad 4: todos los datos del producto
-  Widget _datosProducto() {
+  // TODO Actividad 5: textos con los estilos del tema en lugar de tamaño 30
+  Widget _datosProducto(BuildContext context) {
+    final estilos = Theme.of(context).textTheme;
+    final colores = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text('Id:', style: _myTextStyle1),
-            Text(' $_id ', style: _myTextStyle2),
-            Text('Name: ', style: _myTextStyle1),
-            // TODO Actividad 4: Expanded para que si un nombre eslargo pase a la línea siguiente
-            Expanded(child: Text(_name, style: _myTextStyle2)),
-          ],
+        // TODO Actividad 5: el nombre como título principal
+        Text(
+          _name,
+          style: estilos.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        // TODO Actividad 4: precio del producto
-        Row(
-          children: <Widget>[
-            Text('Precio: ', style: _myTextStyle1),
-            Text('${_precio.toStringAsFixed(2)} €', style: _myTextStyle2),
-          ],
-        ),
+        Text('Id: $_id', style: estilos.bodyMedium),
         const SizedBox(height: 8.0),
+        // TODO Actividad 4: precio del producto
+        // TODO Actividad 5: precio destacado con el color del tema
+        Text(
+          'Precio: ${_precio.toStringAsFixed(2)} €',
+          style: estilos.titleLarge?.copyWith(
+            color: colores.primary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 12.0),
         // TODO Actividad 4: categoría con su imagen
         Row(
           children: <Widget>[
-            Text('Categoría: ', style: _myTextStyle1),
-            Image.asset(_imagenCategoria,
-                width: 60.0, height: 60.0, fit: BoxFit.cover),
-            const SizedBox(width: 8.0),
-            Expanded(child: Text(_categoria, style: _myTextStyle2)),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(_imagenCategoria,
+                  width: 48.0, height: 48.0, fit: BoxFit.cover),
+            ),
+            const SizedBox(width: 12.0),
+            Expanded(
+              child: Text('Categoría: $_categoria', style: estilos.titleMedium),
+            ),
           ],
         ),
-        const Divider(color: Colors.grey, thickness: 1),
-        Text('Description ', style: _myTextStyle1),
-        Text(_description, style: _myTextStyle3, textAlign: TextAlign.justify),
+        const Divider(height: 32.0),
+        Text('Description', style: estilos.titleMedium),
+        const SizedBox(height: 4.0),
+        Text(_description,
+            style: estilos.bodyLarge, textAlign: TextAlign.justify),
       ],
     );
   }

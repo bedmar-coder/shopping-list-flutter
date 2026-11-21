@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:t3_shopping_list/models/product.dart';
 import 'package:t3_shopping_list/providers/products_data.dart';
 import 'package:t3_shopping_list/screens/product_detail.dart';
+// TODO Actividad 5: widget reutilizable de la imagen con Hero
+import 'package:t3_shopping_list/widgets/imagen_producto.dart';
 
 //TODO Actividad 1: import de la pantalla del carrito
 import 'package:t3_shopping_list/screens/cart.dart';
@@ -83,6 +85,8 @@ class _ProductsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      // TODO Actividad 5: margen arriba y abajo para que la lista no quede pegada a la AppBar
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       itemCount: _productsData.getSize(),
       itemBuilder: (context, index) =>
           _listItem(context, _productsData.getProduct(index)),
@@ -90,34 +94,38 @@ class _ProductsListView extends StatelessWidget {
   }
 
   Widget _listItem(BuildContext context, Product product) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
+    // TODO Actividad 5: tag único de la animación Hero para las imágenes de la lista
+    String tagHero = 'lista_${product.id}';
+
+    // TODO Actividad 5: cada producto en un Card en lugar de un borde fijo
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       child: ListTile(
+        contentPadding: const EdgeInsets.all(8.0),
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) =>
             // TODO Actividad 4: pasamos también precio, categoría, imagen e imagen de la categoría
+            // TODO Actividad 5: y el tag del Hero para que la imagen vuele hasta el detalle
             ProductDetail(product.id, product.name, product.description,
                 product.price, product.category, product.image,
-                product.imagenCategoria),
+                product.imagenCategoria, tagHero),
           ),
         ),
-        leading: Image.asset(
-          product.image,
-          width: 100.0,
-          height: 100.0,
-          fit: BoxFit.contain,
-          alignment: Alignment.bottomCenter,
-        ),
+        // TODO Actividad 5: imagen redondeada con Hero
+        leading: ImagenProducto(product.image, tagHero, 80.0, 80.0),
         //TODO Actividad 1: he cambiado el icono shoppping bar para que ahora sea un widget Stateful para poder
         //añadir y quitar del carrito
         trailing: _ShoppingBagIcon(product),
-        title: Text(product.name),
-        subtitle: Text('${product.price}'),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Colors.indigo),
-          borderRadius: BorderRadius.circular(10),
+        // TODO Actividad 5: nombre en negrita y precio con dos decimales y el color del tema
+        title: Text(
+          product.name,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          '${product.price.toStringAsFixed(2)} €',
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
       ),
     );
@@ -151,7 +159,7 @@ class _ShoppingBagIconState extends State<_ShoppingBagIcon> {
   }
 
   //TODO Actividad 1; selecciona o quita el producto
-void _toggleSelected() {
+  void _toggleSelected() {
     setState(() {
       _selected = !_selected;
       widget.product.selected = _selected;
@@ -159,15 +167,21 @@ void _toggleSelected() {
         widget.product.quantity = 1;
       }
     });
-}
+  }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _toggleSelected,
-      child: Icon(
-        Icons.shopping_bag,
-        color: _selected ? Colors.green : Colors.grey,
+      // TODO Actividad 5: el Padding agranda la zona que se puede pulsar alrededor del icono
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Icon(
+          Icons.shopping_bag,
+          size: 28.0,
+          // TODO Actividad 5: color del tema cuando está seleccionado
+          color: _selected ? Theme.of(context).colorScheme.primary : Colors.grey,
+        ),
       ),
     );
   }
